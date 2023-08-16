@@ -1,4 +1,4 @@
-const data = require(`./data/database.json`).expense;
+const expense = require(`./data/database.json`).expense;
 const express = require(`express`);
 const cors = require(`cors`);
 const moment = require(`moment`);
@@ -9,7 +9,7 @@ app.use(cors());
 const PORT = process.env.PORT;
 const inputVerificator = require(`./middlewares/inputVerificator`);
 const patcValidator = require(`./middlewares/patchValidator`);
-const expense = JSON.parse(data);
+// const expense = JSON.parse(data);
 
 app.listen(PORT, () =>
   console.log(`server is online on port ${PORT}, ${expense}`)
