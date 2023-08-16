@@ -1,5 +1,5 @@
 const moment = require(`moment`);
-const categoryname = require(`../constant`);
+const categoryname = require(`../data/database.json`).category;
 const inputVerificator = (req, res, next) => {
   try {
     const { name, nominal, category } = req.body;

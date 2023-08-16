@@ -1,4 +1,4 @@
-const categoryname = require(`../constant`);
+const categoryname = require(`../data/database.json`).category;
 
 const patcValidator = (req, res, next) => {
   try {

@@ -9,6 +9,7 @@ app.use(cors());
 const PORT = process.env.PORT;
 const inputVerificator = require(`./middlewares/inputVerificator`);
 const patcValidator = require(`./middlewares/patchValidator`);
+const category = require(`./data/database.json`).category;
 
 app.listen(PORT, () => console.log(`server is online on port ${PORT}`));
 
@@ -99,5 +100,13 @@ app.delete(`/expense/:id`, (req, res) => {
     return res.status(201).send(deleted);
   } catch (err) {
     return res.status(404).send(err.message);
+  }
+});
+
+app.get(`/category`, (req, res) => {
+  try {
+    return res.send(category);
+  } catch (err) {
+    return res.status(400).send(err);
   }
 });
