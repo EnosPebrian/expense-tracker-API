@@ -9,11 +9,8 @@ app.use(cors());
 const PORT = process.env.PORT;
 const inputVerificator = require(`./middlewares/inputVerificator`);
 const patcValidator = require(`./middlewares/patchValidator`);
-// const expense = JSON.parse(data);
 
-app.listen(PORT, () =>
-  console.log(`server is online on port ${PORT}, ${expense}`)
-);
+app.listen(PORT, () => console.log(`server is online on port ${PORT}`));
 
 app.get(`/expense`, (req, res) => {
   try {
