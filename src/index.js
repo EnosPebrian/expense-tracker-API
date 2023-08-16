@@ -1,3 +1,4 @@
+const data = require(`./data/database.json`).expense;
 const express = require(`express`);
 const cors = require(`cors`);
 const moment = require(`moment`);
@@ -8,8 +9,11 @@ app.use(cors());
 const PORT = process.env.PORT;
 const inputVerificator = require(`./middlewares/inputVerificator`);
 const patcValidator = require(`./middlewares/patchValidator`);
+const expense = JSON.parse(data);
 
-app.listen(PORT, () => console.log(`server is online on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`server is online on port ${PORT}, ${expense}`)
+);
 
 app.get(`/expense`, (req, res) => {
   try {
@@ -100,94 +104,3 @@ app.delete(`/expense/:id`, (req, res) => {
     return res.status(404).send(err.message);
   }
 });
-
-const expense = [
-  {
-    id: 1,
-    name: `Mie tarempak`,
-    nominal: 40000,
-    category: "food",
-    date: "2023-08-15",
-    time: "12:03:04",
-  },
-  {
-    id: 2,
-    name: `Brokoli`,
-    nominal: 25000,
-    category: "groceries",
-    date: "2023-08-14",
-    time: "16:03:04",
-  },
-  {
-    id: 3,
-    name: `Grab ke rumah`,
-    nominal: 40000,
-    category: "transportation",
-    date: "2023-08-13",
-    time: "09:03:04",
-  },
-  {
-    id: 4,
-    name: `Paintball`,
-    nominal: 120000,
-    category: "entertainment",
-    date: "2023-08-01",
-    time: "09:03:04",
-  },
-  {
-    id: 5,
-    name: `Futsal`,
-    nominal: 350000,
-    category: "sport",
-    date: "2023-08-01",
-    time: "09:03:04",
-  },
-  {
-    id: 6,
-    name: `Ticket ke Jkt`,
-    nominal: 1000000,
-    category: "transportation",
-    date: "2023-08-01",
-    time: "09:03:04",
-  },
-  {
-    id: 7,
-    name: `Berenang`,
-    nominal: 30000,
-    category: "sport",
-    date: "2023-08-09",
-    time: "09:03:04",
-  },
-  {
-    id: 8,
-    name: `Weywey Palace`,
-    nominal: 500000,
-    category: "entertainment",
-    date: "2023-08-10",
-    time: "09:03:04",
-  },
-  {
-    id: 9,
-    name: `Wortel`,
-    nominal: 20000,
-    category: "groceries",
-    date: "2023-08-10",
-    time: "09:03:04",
-  },
-  {
-    id: 10,
-    name: `Nasipadang garuda`,
-    nominal: 45000,
-    category: "food",
-    date: "2023-08-10",
-    time: "09:03:04",
-  },
-  {
-    id: 11,
-    name: `Taxi bandara`,
-    nominal: 120000,
-    category: "transportation",
-    date: "2023-08-10",
-    time: "09:03:04",
-  },
-];
