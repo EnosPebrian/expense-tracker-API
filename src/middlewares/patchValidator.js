@@ -7,7 +7,7 @@ const patcValidator = (req, res, next) => {
     let isCategoryRight = true;
     if (category) {
       for (item of categoryname) {
-        if (category != item) isCategoryRight = false;
+        if (category != item.category) isCategoryRight = false;
         else {
           isCategoryRight = true;
           break;

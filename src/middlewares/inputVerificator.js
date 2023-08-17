@@ -8,7 +8,7 @@ const inputVerificator = (req, res, next) => {
     let isCategoryRight = 1;
     if (category) {
       for (item of categoryname) {
-        if (category != item) isCategoryRight = 0;
+        if (category != item.category) isCategoryRight = 0;
         else {
           isCategoryRight = 1;
           break;

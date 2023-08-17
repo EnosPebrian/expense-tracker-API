@@ -89,5 +89,11 @@
       "time": "09:03:04"
     }
   ],
-  "category": ["transportation", "groceries", "entertainment", "food", "sport"]
+  "category": [
+    { "id": 1, "category": "transportation" },
+    { "id": 2, "category": "groceries" },
+    { "id": 3, "category": "entertainment" },
+    { "id": 4, "category": "food" },
+    { "id": 5, "category": "sport" }
+  ]
 }
