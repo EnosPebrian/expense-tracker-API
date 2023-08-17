@@ -9,23 +9,26 @@ app.use(cors());
 const PORT = process.env.PORT;
 const inputVerificator = require(`./middlewares/inputVerificator`);
 const patcValidator = require(`./middlewares/patchValidator`);
-const category = require(`./data/database.json`).category;
+const categorylist = require(`./data/database.json`).category;
 
 app.listen(PORT, () => console.log(`server is online on port ${PORT}`));
 
 app.get(`/expense`, (req, res) => {
+  const total = {};
   try {
-    let temp = [...expense];
-    const {
-      datefrom,
-      dateto,
-      category,
-      id,
-      name,
-      nominalfrom,
-      nominalto,
-      action,
-    } = req.query;
+    let temp = [...expense].sort((a, b) => {
+      if (a.date > b.date) return -1;
+      if (a.date < b.date) return 1;
+      else return 0;
+    });
+    const { datefrom, dateto, category, id, name, nominalfrom, nominalto } =
+      req.query;
+    if (id && typeof id === "string") temp = temp.filter((exp) => exp.id == id);
+    if (id && typeof id === "object") {
+      const tmp = [];
+      id.forEach((val) => tmp.push(temp.find((exp) => exp.id == val)));
+      temp = tmp;
+    }
     if (name)
       temp = temp.filter((exp) =>
         exp.name.toLowerCase().includes(name.toLowerCase())
@@ -49,7 +52,18 @@ app.get(`/expense`, (req, res) => {
       temp = temp.filter((exp) => Number(exp.nominal) <= Number(nominalto));
     if (datefrom) temp = temp.filter((exp) => exp.date >= datefrom);
     if (dateto) temp = temp.filter((exp) => exp.date <= dateto);
-    total = temp.reduce((acc, val) => acc + val.nominal, 0);
+    total.grandtotal = temp.reduce((acc, val) => acc + val.nominal, 0);
+    const temp_container = [];
+    for (let cat of categorylist) {
+      temp_container.push([
+        cat,
+        temp
+          .filter((val) => val.category == cat)
+          .reduce((acc, val) => acc + val.nominal, 0),
+      ]);
+    }
+    temp_container.sort((a, b) => b[1] - a[1]);
+    temp_container.forEach((val) => (total[val[0]] = val[1]));
     return res.send({ totalexpense: total, item: temp });
   } catch (err) {
     return res.status(404).send(err.message);
@@ -105,7 +119,7 @@ app.delete(`/expense/:id`, (req, res) => {
 
 app.get(`/category`, (req, res) => {
   try {
-    return res.send(category);
+    return res.send(categorylist);
   } catch (err) {
     return res.status(400).send(err);
   }
