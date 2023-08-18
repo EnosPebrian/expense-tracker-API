@@ -52,7 +52,7 @@ app.get(`/expense`, (req, res) => {
       temp = temp.filter((exp) => Number(exp.nominal) <= Number(nominalto));
     if (datefrom) temp = temp.filter((exp) => exp.date >= datefrom);
     if (dateto) temp = temp.filter((exp) => exp.date <= dateto);
-    total.grandtotal = temp.reduce((acc, val) => acc + val.nominal, 0);
+    total.grandtotal = 0;
     const temp_container = [];
     for (let cat of Object.values(categorylist)) {
       temp_container.push([
@@ -62,8 +62,13 @@ app.get(`/expense`, (req, res) => {
           .reduce((acc, val) => acc + val.nominal, 0),
       ]);
     }
+
     temp_container.sort((a, b) => b[1] - a[1]);
-    temp_container.forEach((val) => (total[val[0]] = val[1]));
+    temp_container.forEach((val) => {
+      total[val[0]] = val[1];
+      total.grandtotal += val[1];
+    });
+
     return res.send({ totalexpense: total, item: temp });
   } catch (err) {
     return res.status(404).send(err.message);
