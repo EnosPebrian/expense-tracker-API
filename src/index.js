@@ -1,4 +1,4 @@
-const expense = require(`./data/database.json`).expense;
+const expense = require(`./data/data-enos.json`).expense;
 const express = require(`express`);
 const cors = require(`cors`);
 const moment = require(`moment`);
@@ -9,9 +9,11 @@ app.use(cors());
 const PORT = process.env.PORT;
 const inputVerificator = require(`./middlewares/inputVerificator`);
 const patcValidator = require(`./middlewares/patchValidator`);
-const categorylist = require(`./data/database.json`).category;
+const categorylist = require(`./data/data-enos.json`).category;
 
-app.listen(PORT, () => console.log(`server is online on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`server is online on port ${PORT}`);
+});
 
 app.get(`/expense`, (req, res) => {
   const total = {};
@@ -69,6 +71,7 @@ app.get(`/expense`, (req, res) => {
       total.grandtotal += val[1];
     });
 
+    temp = temp.slice(0, 101);
     return res.send({ totalexpense: total, item: temp });
   } catch (err) {
     return res.status(404).send(err.message);

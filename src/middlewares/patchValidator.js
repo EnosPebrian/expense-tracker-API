@@ -1,4 +1,4 @@
-const categoryname = require(`../data/database.json`).category;
+const categoryname = require(`../data/data-enos.json`).category;
 
 const patcValidator = (req, res, next) => {
   try {
