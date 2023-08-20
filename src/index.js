@@ -1,4 +1,4 @@
-const expense = require(`./data/data-enos.json`).expense;
+const expense = require(`./data/database.json`).expense;
 const express = require(`express`);
 const cors = require(`cors`);
 const moment = require(`moment`);
