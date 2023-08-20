@@ -9,7 +9,7 @@ app.use(cors());
 const PORT = process.env.PORT;
 const inputVerificator = require(`./middlewares/inputVerificator`);
 const patcValidator = require(`./middlewares/patchValidator`);
-const categorylist = require(`./data/data-enos.json`).category;
+const categorylist = require(`./data/database.json`).category;
 
 app.listen(PORT, () => {
   console.log(`server is online on port ${PORT}`);
