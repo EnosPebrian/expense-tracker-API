@@ -87,6 +87,70 @@
       "category": "transportation",
       "date": "2023-08-10",
       "time": "09:03:04"
+    },
+    {
+      "id": 12,
+      "name": "Makan pagi",
+      "nominal": 20000,
+      "category": "food",
+      "date": "2023-09-01",
+      "time": "09:03:04"
+    },
+    {
+      "id": 13,
+      "name": "Makan pagi",
+      "nominal": 20000,
+      "category": "food",
+      "date": "2023-09-02",
+      "time": "09:03:04"
+    },
+    {
+      "id": 14,
+      "name": "Makan pagi",
+      "nominal": 20000,
+      "category": "food",
+      "date": "2023-09-10",
+      "time": "09:03:04"
+    },
+    {
+      "id": 15,
+      "name": "Makan pagi",
+      "nominal": 20000,
+      "category": "food",
+      "date": "2023-10-01",
+      "time": "09:03:04"
+    },
+    {
+      "id": 16,
+      "name": "Bensin",
+      "nominal": 50000,
+      "category": "transportation",
+      "date": "2023-10-01",
+      "time": "09:03:04"
+    },
+    {
+      "id": 17,
+      "name": "Bensin",
+      "nominal": 50000,
+      "category": "transportation",
+      "date": "2023-10-05",
+      "time": "09:03:04"
+    },
+    {
+      "id": 18,
+      "name": "Bensin",
+      "nominal": 50000,
+      "category": "transportation",
+      "date": "2023-10-10",
+      "time": "09:03:04"
+    },
+    {
+      "id": 19,
+      "name": "Bensin",
+      "nominal": 50000,
+      "category": "transportation",
+      "date": "2023-10-12",
+      "time": "09:03:04"
     }
   ],
   "category": [

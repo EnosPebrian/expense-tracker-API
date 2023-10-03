@@ -6,7 +6,7 @@ require(`dotenv`).config();
 const app = express();
 app.use(express.json());
 app.use(cors());
-const PORT = process.env.PORT;
+const PORT = 8005;
 const inputVerificator = require(`./middlewares/inputVerificator`);
 const patcValidator = require(`./middlewares/patchValidator`);
 const categorylist = require(`./data/database.json`).category;
