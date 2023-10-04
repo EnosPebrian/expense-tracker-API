@@ -151,6 +151,22 @@
       "category": "transportation",
       "date": "2023-10-12",
       "time": "09:03:04"
+    },
+    {
+      "id": 20,
+      "name": "Sabun",
+      "nominal": 20000,
+      "category": "household consumables",
+      "date": "2023-10-03",
+      "time": "09:03:04"
+    },
+    {
+      "id": 21,
+      "name": "Les Gitar",
+      "nominal": 500000,
+      "category": "self development",
+      "date": "2023-10-01",
+      "time": "09:03:04"
     }
   ],
   "category": [
@@ -158,6 +174,8 @@
     { "id": 2, "category": "groceries" },
     { "id": 3, "category": "entertainment" },
     { "id": 4, "category": "food" },
-    { "id": 5, "category": "sport" }
+    { "id": 5, "category": "sport" },
+    { "id": 6, "category": "household consumables" },
+    { "id": 7, "category": "self development" }
   ]
 }
